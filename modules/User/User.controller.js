@@ -3,8 +3,7 @@ const USER = require("./User.model");
 
 exports.AllUsers = async function (req, res, next) {
   try {
-    // req.body.
-    let allUsersData = await USER.find().populate("team");
+    let allUsersData = await USER.find();
 
     res.status(200).json({
       status: "success",
@@ -19,11 +18,25 @@ exports.AllUsers = async function (req, res, next) {
   }
 };
 
+exports.addImages = async function (req, res, next) {
+  try {
+    res.status(200).json({
+      status: "success",
+      message: "User find successful",
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};
+
 exports.UserCreate = async function (req, res, next) {
   try {
     // req.body.
     let copyData = [...req.body].map((el) => {
-      return { ...el, photo: el.no + ".jpg" };
+      return { ...el, photo: el.no + ".jpeg" };
     });
 
     let newUser = await USER.insertMany(copyData);
