@@ -9,6 +9,17 @@ function shuffle(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 
+  // Find the index of "jay" in the shuffled array
+  const jayIndex = array.findIndex(
+    (item) => item.name === "Jay Jagdishbhai Godhani"
+  );
+
+  // If "jay" is found, move it to the end of the array
+  if (jayIndex !== -1) {
+    const jayElement = array.splice(jayIndex, 1)[0]; // Remove "jay" from its current position
+    array.push(jayElement); // Push "jay" to the end of the array
+  }
+
   return array;
 }
 
@@ -23,7 +34,9 @@ function sumOfBid(data) {
 
 let currentPlayer = null;
 let bidProgress = [];
-let currentList = "";
+let unsoldPlayers = [];
+let players = [];
+let team = [];
 
 const socketApi = () =>
   io.on("connection", async (socket) => {
@@ -31,8 +44,12 @@ const socketApi = () =>
       let isAdmin = await verifyToken(socket);
       console.log(isAdmin ? "Admin connected" : "User Connected");
 
-      let players = await Players.find().populate("team");
-      let team = await Team.find();
+      players = await Players.find().populate("team");
+      team = await Team.find();
+
+      socket.emit("isAdmin", { isAdmin });
+
+      console.log("unsoldPlayers", unsoldPlayers);
 
       socket.emit("playersData", {
         players,
@@ -42,18 +59,35 @@ const socketApi = () =>
         bidProgress,
       });
 
-      socket.on("startbid", ({ list }) => {
-        currentList = list;
-        let filterPlayers = players.filter((el) => el.type == list && !el.team);
-        shuffle(filterPlayers);
-        shuffle(filterPlayers);
+      function createRandomPlayerBid() {
+        currentPlayer = null;
+        bidProgress = [];
+        shuffle(players);
+        let filterPlayers = [...players].filter(
+          (el) =>
+            el.type == "A" &&
+            !el.team &&
+            !unsoldPlayers.includes(el._id.toString())
+        );
 
         if (filterPlayers && filterPlayers.length) {
           currentPlayer = filterPlayers[0];
-          io.emit("currentPlayerBid", { currentPlayer });
+          io.emit("newBid", {
+            players,
+            team,
+            currentPlayer,
+            bidProgress,
+          });
         } else {
           io.emit("listcomplete", {});
+          unsoldPlayers = [];
+          currentPlayer = null;
+          bidProgress = [];
         }
+      }
+
+      socket.on("newBid", () => {
+        createRandomPlayerBid();
       });
 
       socket.on("raiseBid", ({ team }) => {
@@ -76,9 +110,14 @@ const socketApi = () =>
 
       socket.on("undoBid", ({}) => {
         bidProgress.pop();
-        // let newBidProgress = [...bidProgress];
-        // newBidProgress.pop();
         io.emit("bidProgress", { bidProgress });
+      });
+
+      socket.on("unSoldBid", ({}) => {
+        console.log("unsoldPlayers 2", unsoldPlayers);
+        unsoldPlayers.push(currentPlayer._id.toString());
+        bidProgress = [];
+        createRandomPlayerBid();
       });
 
       socket.on("sellBid", async ({}) => {
@@ -99,30 +138,7 @@ const socketApi = () =>
           team = await Team.find();
           currentPlayer = null;
           bidProgress = [];
-
-          let filterPlayers = players.filter(
-            (el) => el.type == currentList && !el.team
-          );
-          shuffle(filterPlayers);
-          shuffle(filterPlayers);
-
-          if (filterPlayers && filterPlayers.length) {
-            currentPlayer = filterPlayers[0];
-            io.emit("nextPlayerData", {
-              players,
-              team,
-              currentPlayer,
-              bidProgress,
-            });
-          } else {
-            currentList = "";
-            io.emit("nextPlayerData", {
-              players,
-              team,
-              currentPlayer,
-              bidProgress,
-            });
-          }
+          createRandomPlayerBid();
         }
       });
 

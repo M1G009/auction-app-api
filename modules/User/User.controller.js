@@ -3,7 +3,7 @@ const USER = require("./User.model");
 
 exports.AllUsers = async function (req, res, next) {
   try {
-    let allUsersData = await USER.find();
+    let allUsersData = await USER.find().populate("team");
 
     res.status(200).json({
       status: "success",
