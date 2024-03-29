@@ -42,14 +42,11 @@ const socketApi = () =>
   io.on("connection", async (socket) => {
     try {
       let isAdmin = await verifyToken(socket);
-      console.log(isAdmin ? "Admin connected" : "User Connected");
 
       players = await Players.find().populate("team");
       team = await Team.find();
 
       socket.emit("isAdmin", { isAdmin });
-
-      console.log("unsoldPlayers", unsoldPlayers);
 
       socket.emit("playersData", {
         players,
@@ -114,7 +111,6 @@ const socketApi = () =>
       });
 
       socket.on("unSoldBid", ({}) => {
-        console.log("unsoldPlayers 2", unsoldPlayers);
         unsoldPlayers.push(currentPlayer._id.toString());
         bidProgress = [];
         createRandomPlayerBid();
