@@ -12,7 +12,7 @@ const teamSchema = new Schema(
     },
     totalpurse: {
       type: Number,
-      default: 80,
+      default: 78,
     },
     owner: { type: Schema.Types.ObjectId, ref: "user" },
     captain: { type: Schema.Types.ObjectId, ref: "user" },
