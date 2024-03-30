@@ -20,6 +20,26 @@ function shuffle(array) {
     array.push(jayElement); // Push "jay" to the end of the array
   }
 
+  // Find the index of "jay" in the shuffled array
+  const ramIndex = array.findIndex((item) => item.name === "Ashish Godhani");
+
+  // If "jay" is found, move it to the end of the array
+  if (ramIndex !== -1) {
+    const jayElement = array.splice(ramIndex, 1)[0]; // Remove "jay" from its current position
+    array.push(jayElement); // Push "jay" to the end of the array
+  }
+
+  // Find the index of "jay" in the shuffled array
+  const neelIndex = array.findIndex(
+    (item) => item.name === "Zeel Bharatbhai Savaliya"
+  );
+
+  // If "jay" is found, move it to the end of the array
+  if (neelIndex !== -1) {
+    const jayElement = array.splice(neelIndex, 1)[0]; // Remove "jay" from its current position
+    array.push(jayElement); // Push "jay" to the end of the array
+  }
+
   return array;
 }
 
