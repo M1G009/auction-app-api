@@ -148,7 +148,7 @@ const socketApi = () =>
             finalprice,
           });
           await Team.findByIdAndUpdate(finalTeam._id, {
-            totalpurse: finalTeam.totalpurse - (finalprice - 2),
+            totalpurse: finalTeam.totalpurse - finalprice,
           });
           players = await Players.find().populate("team");
           team = await Team.find();
