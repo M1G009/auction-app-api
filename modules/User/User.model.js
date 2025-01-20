@@ -13,24 +13,18 @@ const userSchema = new Schema(
     mobile: {
       type: String,
     },
-    age: {
-      type: String,
-    },
-    allrounder: {
-      type: String,
-    },
     wicketkeeper: {
-      type: String,
+      type: Boolean,
     },
     batstyle: {
-      type: String,
+      type: Boolean,
     },
     bowlstyle: {
-      type: String,
+      type: Boolean,
     },
     type: {
       type: String,
-      enum: ["Owner", "Captain", "A", "B", "C"],
+      enum: ["Owner", "Captain", "IconPlayer", "Player"],
     },
     team: { type: Schema.Types.ObjectId, ref: "team" },
     finalprice: {

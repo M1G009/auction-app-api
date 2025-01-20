@@ -1,7 +1,8 @@
 const { io } = require("../app");
 const verifyToken = require("./SecureSocket.controller");
-const Players = require("../modules/User/User.model");
-const Team = require("../modules/Team/Team.model");
+const PlayersModel = require("../modules/User/User.model");
+const TeamModel = require("../modules/Team/Team.model");
+const AuctionSettingModel = require("../modules/AuctionSetting/AuctionSetting.model");
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -57,15 +58,22 @@ let bidProgress = [];
 let unsoldPlayers = [];
 let players = [];
 let team = [];
+let auctionSetting = {};
 
 const socketApi = () =>
   io.on("connection", async (socket) => {
     try {
+
+
+      const resetPlayersAndTeam = async () => {
+        players = await PlayersModel.find().populate("team");
+        team = await TeamModel.find();
+      };
+      await resetPlayersAndTeam();
       let isAdmin = await verifyToken(socket);
-
-      players = await Players.find().populate("team");
-      team = await Team.find();
-
+      
+      auctionSetting = await AuctionSettingModel.findOne();
+      
       socket.emit("isAdmin", { isAdmin });
 
       socket.emit("playersData", {
@@ -74,6 +82,7 @@ const socketApi = () =>
         isAdmin,
         currentPlayer,
         bidProgress,
+        auctionSetting,
       });
 
       function createRandomPlayerBid() {
@@ -82,7 +91,7 @@ const socketApi = () =>
         shuffle(players);
         let filterPlayers = [...players].filter(
           (el) =>
-            el.type == "A" &&
+            el.type == "Player" &&
             !el.team &&
             !unsoldPlayers.includes(el._id.toString())
         );
@@ -105,6 +114,15 @@ const socketApi = () =>
 
       socket.on("newBid", () => {
         createRandomPlayerBid();
+      });
+
+      socket.on("resumeBid", () => {
+        io.emit("newBid", {
+          players,
+          team,
+          currentPlayer,
+          bidProgress,
+        });
       });
 
       socket.on("raiseBid", ({ team }) => {
@@ -143,22 +161,72 @@ const socketApi = () =>
           : "";
         if (playerId && finalTeam && finalTeam._id) {
           let finalprice = sumOfBid(bidProgress);
-          await Players.findByIdAndUpdate(playerId, {
+          await PlayersModel.findByIdAndUpdate(playerId, {
             team: finalTeam._id,
             finalprice,
           });
-          await Team.findByIdAndUpdate(finalTeam._id, {
+          await TeamModel.findByIdAndUpdate(finalTeam._id, {
             totalpurse: finalTeam.totalpurse - finalprice,
           });
-          players = await Players.find().populate("team");
-          team = await Team.find();
+          players = await PlayersModel.find().populate("team");
+          team = await TeamModel.find();
           currentPlayer = null;
           bidProgress = [];
           createRandomPlayerBid();
         }
       });
 
-      ////////////////////////////////////
+      socket.on("updateSetting", async ({ data }) => {
+        console.log("data", data);
+        auctionSetting = await AuctionSettingModel.findOneAndUpdate({}, data, {
+          upsert: true,
+        });
+        console.log("data", auctionSetting);
+      });
+
+      socket.on("resetPlayerAndAmountHandler", async ({}) => {
+        await PlayersModel.updateMany({type: "Player"}, { team: null, finalprice: 0, type: "Player" });
+        await TeamModel.updateMany({}, { totalpurse: 100 });
+        await resetPlayersAndTeam();
+        currentPlayer = null
+        socket.emit("playersData", {
+          players,
+          team,
+          isAdmin,
+          currentPlayer,
+          bidProgress,
+          auctionSetting,
+        });
+      });
+
+      socket.on("resetCaptainHandler", async ({}) => {
+        await PlayersModel.updateMany({type: "Captain"}, { team: null, finalprice: 0, type: "Player" });
+        await resetPlayersAndTeam();
+        currentPlayer = null
+        socket.emit("playersData", {
+          players,
+          team,
+          isAdmin,
+          currentPlayer,
+          bidProgress,
+          auctionSetting,
+        });
+      });
+
+      socket.on("resetIconPlayersHandler", async ({}) => {
+        await PlayersModel.updateMany({type: "IconPlayer"}, { team: null, finalprice: 0, type: "Player" });
+        await resetPlayersAndTeam();
+        currentPlayer = null
+        socket.emit("playersData", {
+          players,
+          team,
+          isAdmin,
+          currentPlayer,
+          bidProgress,
+          auctionSetting,
+        });
+      });
+
     } catch (error) {
       socket.emit("errorMessage", {
         message: error.message,
