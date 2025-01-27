@@ -12,6 +12,9 @@ const userSchema = new Schema(
     reservePlayersPerTeam: {
       type: Number,
     },
+    startBid: {
+      type: Number,
+    },
   },
   { timestamps: true }
 );

@@ -138,7 +138,7 @@ const socketApi = () =>
             bidProgress = newBidProgress;
           }
         } else if (bidProgress.length == 0) {
-          bidProgress = [...bidProgress, { ...team, bid: 2 }];
+          bidProgress = [...bidProgress, { ...team, bid: auctionSetting?.startBid || 1 }];
         }
         io.emit("bidProgress", { bidProgress });
       });
