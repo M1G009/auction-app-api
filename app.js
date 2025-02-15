@@ -6,11 +6,8 @@ var logger = require("morgan");
 const mongoose = require("mongoose");
 var cors = require("cors");
 const { Server } = require("socket.io");
-const https = require("https");
-const http = require("https");
+const http = require("http");
 require("dotenv").config();
-const fs = require("fs");
-
 /**
  * Get port from environment and store in Express.
  */
@@ -30,23 +27,7 @@ var teamRouter = require("./modules/Team/Team.route");
 var userRouter = require("./modules/User/User.route");
 
 var app = express();
-
-const isProduction = process.env.NODE_ENV === "production";
-
-let httpServer;
-if (isProduction) {
-  // Load SSL certificate for HTTPS
-  const options = {
-    key: fs.readFileSync("key.pem"),
-    cert: fs.readFileSync("cert.pem"),
-  };
-  httpServer = https.createServer(options, app);
-  console.log("Running WebSocket httpServer with HTTPS (wss://)");
-} else {
-  // Use HTTP in development
-  httpServer = http.createServer(app);
-  console.log("Running WebSocket httpServer with HTTP (ws://)");
-}
+const httpServer = http.createServer(app);
 
 const io = new Server(httpServer);
 // view engine setup
