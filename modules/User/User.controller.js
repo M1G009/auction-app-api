@@ -35,8 +35,8 @@ exports.addImages = async function (req, res, next) {
 exports.UserCreate = async function (req, res, next) {
   try {
     // req.body.
-    let copyData = [...req.body].map((el) => {
-      return { ...el, photo: el.no + ".jpeg" };
+    let copyData = [...req.body].map((el, index) => {
+      return { ...el, photo: index + 1 + ".jpg" };
     });
 
     let newUser = await USER.insertMany(copyData);

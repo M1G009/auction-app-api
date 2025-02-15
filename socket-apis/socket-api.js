@@ -10,38 +10,7 @@ function shuffle(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 
-  // Find the index of "jay" in the shuffled array
-  const jayIndex = array.findIndex(
-    (item) => item.name === "Jay Jagdishbhai Godhani"
-  );
-
-  // If "jay" is found, move it to the end of the array
-  if (jayIndex !== -1) {
-    const jayElement = array.splice(jayIndex, 1)[0]; // Remove "jay" from its current position
-    array.push(jayElement); // Push "jay" to the end of the array
-  }
-
-  // Find the index of "jay" in the shuffled array
-  const ramIndex = array.findIndex((item) => item.name === "Ashish Godhani");
-
-  // If "jay" is found, move it to the end of the array
-  if (ramIndex !== -1) {
-    const jayElement = array.splice(ramIndex, 1)[0]; // Remove "jay" from its current position
-    array.push(jayElement); // Push "jay" to the end of the array
-  }
-
-  // Find the index of "jay" in the shuffled array
-  const neelIndex = array.findIndex(
-    (item) => item.name === "Zeel Bharatbhai Savaliya"
-  );
-
-  // If "jay" is found, move it to the end of the array
-  if (neelIndex !== -1) {
-    const jayElement = array.splice(neelIndex, 1)[0]; // Remove "jay" from its current position
-    array.push(jayElement); // Push "jay" to the end of the array
-  }
-
-  return array;
+  return array.sort((a, b) => a.rank - b.rank);
 }
 
 function sumOfBid(data) {
@@ -63,17 +32,15 @@ let auctionSetting = {};
 const socketApi = () =>
   io.on("connection", async (socket) => {
     try {
-
-
       const resetPlayersAndTeam = async () => {
         players = await PlayersModel.find().populate("team");
         team = await TeamModel.find();
       };
       await resetPlayersAndTeam();
       let isAdmin = await verifyToken(socket);
-      
+
       auctionSetting = await AuctionSettingModel.findOne();
-      
+
       socket.emit("isAdmin", { isAdmin });
 
       socket.emit("playersData", {
@@ -138,7 +105,10 @@ const socketApi = () =>
             bidProgress = newBidProgress;
           }
         } else if (bidProgress.length == 0) {
-          bidProgress = [...bidProgress, { ...team, bid: auctionSetting?.startBid || 1 }];
+          bidProgress = [
+            ...bidProgress,
+            { ...team, bid: auctionSetting?.startBid || 1 },
+          ];
         }
         io.emit("bidProgress", { bidProgress });
       });
@@ -185,10 +155,13 @@ const socketApi = () =>
       });
 
       socket.on("resetPlayerAndAmountHandler", async ({}) => {
-        await PlayersModel.updateMany({type: "Player"}, { team: null, finalprice: 0, type: "Player" });
+        await PlayersModel.updateMany(
+          { type: "Player" },
+          { team: null, finalprice: 0, type: "Player" }
+        );
         await TeamModel.updateMany({}, { totalpurse: 100 });
         await resetPlayersAndTeam();
-        currentPlayer = null
+        currentPlayer = null;
         socket.emit("playersData", {
           players,
           team,
@@ -200,9 +173,12 @@ const socketApi = () =>
       });
 
       socket.on("resetCaptainHandler", async ({}) => {
-        await PlayersModel.updateMany({type: "Captain"}, { team: null, finalprice: 0, type: "Player" });
+        await PlayersModel.updateMany(
+          { type: "Captain" },
+          { team: null, finalprice: 0, type: "Player" }
+        );
         await resetPlayersAndTeam();
-        currentPlayer = null
+        currentPlayer = null;
         socket.emit("playersData", {
           players,
           team,
@@ -214,9 +190,12 @@ const socketApi = () =>
       });
 
       socket.on("resetIconPlayersHandler", async ({}) => {
-        await PlayersModel.updateMany({type: "IconPlayer"}, { team: null, finalprice: 0, type: "Player" });
+        await PlayersModel.updateMany(
+          { type: "IconPlayer" },
+          { team: null, finalprice: 0, type: "Player" }
+        );
         await resetPlayersAndTeam();
-        currentPlayer = null
+        currentPlayer = null;
         socket.emit("playersData", {
           players,
           team,
@@ -226,7 +205,6 @@ const socketApi = () =>
           auctionSetting,
         });
       });
-
     } catch (error) {
       socket.emit("errorMessage", {
         message: error.message,

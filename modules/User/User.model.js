@@ -22,9 +22,14 @@ const userSchema = new Schema(
     bowlstyle: {
       type: Boolean,
     },
+    rank: {
+      type: Number,
+      default: 2,
+    },
     type: {
       type: String,
-      enum: ["Owner", "Captain", "IconPlayer", "Player"],
+      enum: ["Captain", "IconPlayer", "Player"],
+      default: "Player",
     },
     team: { type: Schema.Types.ObjectId, ref: "team" },
     finalprice: {

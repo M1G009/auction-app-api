@@ -3,7 +3,7 @@ const Team = require("./Team.model");
 exports.AllTeams = async function (req, res, next) {
   try {
     // req.body.
-    let allTeamsData = await Team.find().populate(["owner", "captain"]);
+    let allTeamsData = await Team.find();
 
     res.status(200).json({
       status: "success",

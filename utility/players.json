@@ -1,0 +1,706 @@
+[
+  {
+    "name": "Mohit Godhani",
+    "mobile": 8155819695,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 0
+  },
+  {
+    "name": "Ashish Godhani",
+    "mobile": 9099446296,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 3
+  },
+  {
+    "name": "Parth Savaliya",
+    "mobile": 9925051047,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 0
+  },
+  {
+    "name": "MIRAV VINUBHAI SABHADIYA",
+    "mobile": 9409499938,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Parmar rudra",
+    "mobile": 9081993571,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  },
+  {
+    "name": "Chauhan shravan",
+    "mobile": 7046323753,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Mangukiya yash hareshbhai",
+    "mobile": 9081642559,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Jigneshbhai K Gorasiya",
+    "mobile": 9726978838,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Piyush Sutariya",
+    "mobile": 9726184312,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Gopal Chauhan",
+    "mobile": 6353311922,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  },
+  {
+    "name": "Nayan Sutariya",
+    "mobile": 8849810333,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 0
+  },
+  {
+    "name": "Hiren Rameshbhai Sabhadiya",
+    "mobile": 9913551862,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 0
+  },
+  {
+    "name": "Nikhil savaliya",
+    "mobile": 9638560713,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Jatin bhojani",
+    "mobile": 9737263907,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 0
+  },
+  {
+    "name": "Yogesh parmar",
+    "mobile": 9624166738,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Vasu Godhani",
+    "mobile": 6355647355,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 4
+  },
+  {
+    "name": "Rajesh bhai Chauhan",
+    "mobile": 9016031238,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Dipak savaliya",
+    "mobile": 9624753960,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 0
+  },
+  {
+    "name": "Savaliya sem",
+    "mobile": 9574990069,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 4
+  },
+  {
+    "name": "Godhani gopal",
+    "mobile": 9099407984,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 0
+  },
+  {
+    "name": "Rakesh  Mangukiya",
+    "mobile": 9723995169,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 0
+  },
+  {
+    "name": "Savaliya Jeel B.",
+    "mobile": 9726240934,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 0
+  },
+  {
+    "name": "Abhi Mangukiya",
+    "mobile": 9712642559,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 3
+  },
+  {
+    "name": "Chauhan Kartik",
+    "mobile": 8758806170,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Bhadresh mangukiya",
+    "mobile": 8866442649,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  },
+  {
+    "name": "HARDIK MANGUKIYA",
+    "mobile": 9619630418,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Bhanji Godkiya (jay)",
+    "mobile": 9714470443,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "DHARMIK GODHANI",
+    "mobile": 9081739748,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Ashvin Godhani",
+    "mobile": 9601036610,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 0
+  },
+  {
+    "name": "Bhargav Chauhan",
+    "mobile": 8160979402,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Bhavesh Sutariya",
+    "mobile": "98984 72908",
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 0
+  },
+  {
+    "name": "Gopal Sutariya",
+    "mobile": 8758828449,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 4
+  },
+  {
+    "name": "Savaliya Neel Bharatbhai",
+    "mobile": 8200296849,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Arkit Sutariya",
+    "mobile": 6352389475,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 3
+  },
+  {
+    "name": "Makvana Kalpesh",
+    "mobile": 0,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Ghantala chirag jitendra bhai",
+    "mobile": 9016531155,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 0
+  },
+  {
+    "name": "Godhani kartik",
+    "mobile": 9723972042,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 3
+  },
+  {
+    "name": "Yug Sutariya",
+    "mobile": 9313128505,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Parmar Manoj Nanubhai",
+    "mobile": 8980393436,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Hasmukh maniya",
+    "mobile": 8000738190,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 4
+  },
+  {
+    "name": "Jay Godhani",
+    "mobile": 6354097095,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 0
+  },
+  {
+    "name": "Anil bhojani",
+    "mobile": 9099293496,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 3
+  },
+  {
+    "name": "Chirag bhojani",
+    "mobile": 8980262620,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 4
+  },
+  {
+    "name": "Godhani Juhil Nareshbhai",
+    "mobile": 8320148386,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 4
+  },
+  {
+    "name": "Bhojani mayur L",
+    "mobile": 9722323266,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Donda Hitesh Bhagvanbhai",
+    "mobile": 9904189329,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 4
+  },
+  {
+    "name": "Alpesh nakrani",
+    "mobile": 9879491819,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 4
+  },
+  {
+    "name": "Vaj nakrani",
+    "mobile": 9879491819,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 4
+  },
+  {
+    "name": "Aarav Bhaveshbhai Mangukiya",
+    "mobile": 9904747425,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 4
+  },
+  {
+    "name": "Abhi Sabhadiya rasikbhai",
+    "mobile": 9081210785,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 0
+  },
+  {
+    "name": "Sabhadiya Avi Rasikbhai",
+    "mobile": 9081210784,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Anil n sutariya",
+    "mobile": 9978346543,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Mirli Makvana",
+    "mobile": 9537793949,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Rahul makvana",
+    "mobile": 9904688294,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Pradip Parmar",
+    "mobile": 6355269877,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Rambhai parmar",
+    "mobile": 6354593148,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Ashok chauhan",
+    "mobile": 9998704911,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "GHANTALA SHUBHAM JAYSUKH BHAI",
+    "mobile": "99133 56028",
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 3
+  },
+  {
+    "name": "Bhojani Vasu Mahipatbhai",
+    "mobile": 9913653421,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 4
+  },
+  {
+    "name": "Denis Godhani",
+    "mobile": 9537256159,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 0
+  },
+  {
+    "name": "Gopal Ghantala",
+    "mobile": 9925091044,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Ramya mangukiya",
+    "mobile": 9978322508,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Dinesh Sutariya",
+    "mobile": 9913138398,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Pravinbhai G Sabhadiya",
+    "mobile": 9601292109,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 3
+  },
+  {
+    "name": "Maulik Sabhadiya",
+    "mobile": 9313786101,
+    "wicketkeeper": true,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Somya Godhani",
+    "mobile": 9537256159,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Godhani Jenis Nareshbhai",
+    "mobile": 8154887403,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 4
+  },
+  {
+    "name": "Virendra j sutariya",
+    "mobile": 8469599960,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 2
+  },
+  {
+    "name": "Paresh Godhani",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Dharm Sanjaybhai Sabhadiya",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  },
+  {
+    "name": "Fenil Vallabhbhai",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  },
+  {
+    "name": "Nikhil Gorasiya",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  },
+  {
+    "name": "Naitik Kanubhai Rathod",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  },
+  {
+    "name": "Lakshman Mangukiya",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Janakbhai Bhojani",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 1
+  },
+  {
+    "name": "Darshan Navadiya",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  },
+  {
+    "name": "Chetan mangukiya",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Rakeshbhai B Mangukiya",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 3
+  },
+  {
+    "name": "Vivek Mangukiya",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  },
+  {
+    "name": "Mayank Laljibhai Savaliya",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Mantra mayurbhai bhojani",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Satish Nakrani",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 0
+  },
+  {
+    "name": "Nayan Ashokbhai Chauhan",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Utsav Godhani",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 3
+  },
+  {
+    "name": "Harshad Sutariya",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": true,
+    "rank": 3
+  },
+  {
+    "name": "Sutariya Vipul",
+    "mobile": 9638706169,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 1
+  },
+  {
+    "name": "Yug A Ghantala",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  },
+  {
+    "name": "Sanjaybhai Sabhadiya",
+    "mobile": 0,
+    "wicketkeeper": false,
+    "batstyle": true,
+    "bowlstyle": false,
+    "rank": 2
+  }
+]

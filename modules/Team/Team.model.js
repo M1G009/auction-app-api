@@ -12,10 +12,9 @@ const teamSchema = new Schema(
     },
     totalpurse: {
       type: Number,
-      default: 78,
+      default: 100,
     },
-    owner: { type: Schema.Types.ObjectId, ref: "user" },
-    captain: { type: Schema.Types.ObjectId, ref: "user" },
+    owner: String,
   },
   { timestamps: true }
 );
