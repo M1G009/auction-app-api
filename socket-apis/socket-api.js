@@ -92,24 +92,18 @@ const socketApi = () =>
         });
       });
 
-      socket.on("raiseBid", ({ team }) => {
-        if (
-          bidProgress.length &&
-          bidProgress[bidProgress.length - 1]?.name !== team?.name
-        ) {
-          let newBidProgress = [...bidProgress, { ...team, bid: 1 }];
-          let totalProgressBid = sumOfBid(newBidProgress);
-          if (team.totalpurse < totalProgressBid) {
-            socket.emit("insufficientPurse", { team });
-          } else {
-            bidProgress = newBidProgress;
-          }
-        } else if (bidProgress.length == 0) {
-          bidProgress = [
-            ...bidProgress,
-            { ...team, bid: auctionSetting?.startBid || 1 },
-          ];
+      socket.on("raiseBid", ({}) => {
+        // Just increment bid amount, no team info
+        const incrementAmount = auctionSetting?.bidIncrement || 1;
+        
+        if (bidProgress.length === 0) {
+          // First bid - start with starting bid
+          bidProgress = [{ bid: auctionSetting?.startBid || 1 }];
+        } else {
+          // Increment bid by increment amount
+          bidProgress = [...bidProgress, { bid: incrementAmount }];
         }
+        
         io.emit("bidProgress", { bidProgress });
       });
 
@@ -124,26 +118,53 @@ const socketApi = () =>
         createRandomPlayerBid();
       });
 
-      socket.on("sellBid", async ({}) => {
+      socket.on("sellBid", async ({ team }) => {
         let playerId = currentPlayer._id;
-        let finalTeam = bidProgress.length
-          ? bidProgress[bidProgress.length - 1]
-          : "";
-        if (playerId && finalTeam && finalTeam._id) {
-          let finalprice = sumOfBid(bidProgress);
-          await PlayersModel.findByIdAndUpdate(playerId, {
-            team: finalTeam._id,
-            finalprice,
-          });
-          await TeamModel.findByIdAndUpdate(finalTeam._id, {
-            totalpurse: finalTeam.totalpurse - finalprice,
-          });
-          players = await PlayersModel.find().populate("team");
-          team = await TeamModel.find();
-          currentPlayer = null;
-          bidProgress = [];
-          createRandomPlayerBid();
+        
+        if (!playerId || !team || !team._id) {
+          socket.emit("sellError", { message: "Invalid player or team" });
+          return;
         }
+        
+        let finalprice = sumOfBid(bidProgress);
+        
+        // Check if team can afford
+        const teamData = await TeamModel.findById(team._id);
+        if (!teamData) {
+          socket.emit("sellError", { message: "Team not found" });
+          return;
+        }
+        
+        // Teams can bid up to available balance + startBid amount
+        const maxBidAmount = teamData.totalpurse + (auctionSetting?.startBid || 1);
+        
+        if (finalprice > maxBidAmount) {
+          socket.emit("insufficientPurse", { team });
+          return;
+        }
+        
+        await PlayersModel.findByIdAndUpdate(playerId, {
+          team: team._id,
+          finalprice,
+        });
+        
+        await TeamModel.findByIdAndUpdate(team._id, {
+          totalpurse: teamData.totalpurse - finalprice,
+        });
+        
+        players = await PlayersModel.find().populate("team");
+        team = await TeamModel.find();
+        currentPlayer = null;
+        bidProgress = [];
+        createRandomPlayerBid();
+        
+        io.emit("playersData", {
+          players,
+          team,
+          currentPlayer,
+          bidProgress,
+          auctionSetting,
+        });
       });
 
       socket.on("updateSetting", async ({ data }) => {

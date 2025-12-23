@@ -36,6 +36,18 @@ const userSchema = new Schema(
       type: Number,
       default: 0,
     },
+    tshirtName: {
+      type: String,
+      required: false,
+    },
+    tshirtSize: {
+      type: String,
+      required: false,
+    },
+    tshirtNumber: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

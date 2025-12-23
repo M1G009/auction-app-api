@@ -15,6 +15,46 @@ const userSchema = new Schema(
     startBid: {
       type: Number,
     },
+    registrationActive: {
+      type: Boolean,
+      default: false,
+    },
+    registrationStartDate: {
+      type: Date,
+    },
+    registrationEndDate: {
+      type: Date,
+    },
+    registrationFieldsRequired: {
+      photoRequired: {
+        type: Boolean,
+        default: true,
+      },
+      nameRequired: {
+        type: Boolean,
+        default: true,
+      },
+      mobileRequired: {
+        type: Boolean,
+        default: true,
+      },
+      tshirtNameRequired: {
+        type: Boolean,
+        default: false,
+      },
+      tshirtSizeRequired: {
+        type: Boolean,
+        default: false,
+      },
+      tshirtNumberRequired: {
+        type: Boolean,
+        default: false,
+      },
+      skillsRequired: {
+        type: Boolean,
+        default: false,
+      },
+    },
   },
   { timestamps: true }
 );
