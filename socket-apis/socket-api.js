@@ -92,18 +92,16 @@ const socketApi = () =>
         });
       });
 
-      socket.on("raiseBid", ({}) => {
-        // Just increment bid amount, no team info
+      socket.on("raiseBid", ({ team }) => {
         const incrementAmount = auctionSetting?.bidIncrement || 1;
-        
+        const teamId = team?._id || team?.id || null;
+
         if (bidProgress.length === 0) {
-          // First bid - start with starting bid
-          bidProgress = [{ bid: auctionSetting?.startBid || 1 }];
+          bidProgress = [{ bid: auctionSetting?.startBid || 1, teamId }];
         } else {
-          // Increment bid by increment amount
-          bidProgress = [...bidProgress, { bid: incrementAmount }];
+          bidProgress = [...bidProgress, { bid: incrementAmount, teamId }];
         }
-        
+
         io.emit("bidProgress", { bidProgress });
       });
 
@@ -126,7 +124,7 @@ const socketApi = () =>
           return;
         }
         
-        let finalprice = sumOfBid(bidProgress);
+          let finalprice = sumOfBid(bidProgress);
         
         // Check if team can afford
         const teamData = await TeamModel.findById(team._id);
@@ -143,20 +141,20 @@ const socketApi = () =>
           return;
         }
         
-        await PlayersModel.findByIdAndUpdate(playerId, {
+          await PlayersModel.findByIdAndUpdate(playerId, {
           team: team._id,
-          finalprice,
-        });
+            finalprice,
+          });
         
         await TeamModel.findByIdAndUpdate(team._id, {
           totalpurse: teamData.totalpurse - finalprice,
-        });
+          });
         
-        players = await PlayersModel.find().populate("team");
-        team = await TeamModel.find();
-        currentPlayer = null;
-        bidProgress = [];
-        createRandomPlayerBid();
+          players = await PlayersModel.find().populate("team");
+          team = await TeamModel.find();
+          currentPlayer = null;
+          bidProgress = [];
+          createRandomPlayerBid();
         
         io.emit("playersData", {
           players,

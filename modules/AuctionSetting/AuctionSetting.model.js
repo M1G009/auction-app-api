@@ -25,6 +25,9 @@ const userSchema = new Schema(
     registrationEndDate: {
       type: Date,
     },
+    bannerImage: {
+      type: String,
+    },
     registrationFieldsRequired: {
       photoRequired: {
         type: Boolean,
