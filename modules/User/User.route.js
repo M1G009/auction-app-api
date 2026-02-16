@@ -41,5 +41,6 @@ router.post(
 );
 router.patch("/:id", AdminController.secure, UserController.UserUpdate);
 router.delete("/:id", AdminController.secure, UserController.UserDelete);
+router.post("/:id/make-pending", AdminController.secure, UserController.makePending);
 
 module.exports = router;

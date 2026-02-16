@@ -28,7 +28,7 @@ const userSchema = new Schema(
     },
     type: {
       type: String,
-      enum: ["Captain", "IconPlayer", "Player"],
+      enum: ["Captain", "IconPlayer", "Player", "Unsold"],
       default: "Player",
     },
     team: { type: Schema.Types.ObjectId, ref: "team" },
@@ -46,6 +46,10 @@ const userSchema = new Schema(
     },
     tshirtNumber: {
       type: String,
+      required: false,
+    },
+    playerNumber: {
+      type: Number,
       required: false,
     },
   },
