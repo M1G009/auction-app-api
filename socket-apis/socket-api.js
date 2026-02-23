@@ -160,14 +160,14 @@ const socketApi = () =>
       });
 
       socket.on("sellBid", async ({ team }) => {
-        let playerId = currentPlayer._id;
-        
-        if (!playerId || !team || !team._id) {
+        if (!currentPlayer || !currentPlayer._id || !team || !team._id) {
           socket.emit("sellError", { message: "Invalid player or team" });
           return;
         }
+        const playerId = currentPlayer._id;
         
-          let finalprice = sumOfBid(bidProgress);
+        const startBid = Number(auctionSetting?.startBid) || 1;
+        let finalprice = sumOfBid(bidProgress) || startBid;
         
         // Check if team can afford
         const teamData = await TeamModel.findById(team._id);
@@ -269,6 +269,20 @@ const socketApi = () =>
         });
       });
 
+      socket.on("resetAllUnsoldPlayers", async ({}) => {
+        await PlayersModel.updateMany({ type: "Unsold" }, { team: null, finalprice: 0, type: "Player" });
+        unsoldPlayers = [];
+        await resetPlayersAndTeam();
+        io.emit("playersData", {
+          players,
+          team,
+          isAdmin,
+          currentPlayer,
+          bidProgress,
+          auctionSetting
+        });
+      });
+
       socket.on("resetPlayerNumbersHandler", async ({}) => {
         const list = await PlayersModel.find().sort({ playerNumber: 1, createdAt: 1, _id: 1 }).lean();
         for (let i = 0; i < list.length; i++) {
@@ -290,7 +304,12 @@ const socketApi = () =>
           socket.emit("errorMessage", { message: "Invalid player" });
           return;
         }
-        await PlayersModel.findByIdAndUpdate(playerId, { team: null, finalprice: 0 });
+        await PlayersModel.findByIdAndUpdate(playerId, {
+          team: null,
+          finalprice: 0,
+          type: "Player"
+        });
+        unsoldPlayers = unsoldPlayers.filter((id) => id !== playerId.toString());
         await resetPlayersAndTeam();
         const resetPlayer = players.find((p) => p._id.toString() === playerId.toString());
         if (resetPlayer) {

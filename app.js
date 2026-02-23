@@ -27,6 +27,7 @@ var teamRouter = require("./modules/Team/Team.route");
 var userRouter = require("./modules/User/User.route");
 var auctionSettingRouter = require("./modules/AuctionSetting/AuctionSetting.route");
 var tempUserRouter = require("./modules/TempUser/TempUser.route");
+var pdfRouter = require("./modules/Pdf/Pdf.route");
 
 var app = express();
 const httpServer = http.createServer(app);
@@ -53,6 +54,7 @@ app.use("/api/v1/team", teamRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auction-setting", auctionSettingRouter);
 app.use("/api/v1/temp-user", tempUserRouter);
+app.use("/api/v1/pdf", pdfRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
